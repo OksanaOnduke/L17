@@ -9,18 +9,16 @@ public class DeleteRequestTest extends BaseTest {
     public void testDeleteRequest() {
         String requestBody = "This is expected to be sent back as part of response body.";
 
-        // Выполняем DELETE-запрос с телом
         Response response = given()
                 .body(requestBody)
                 .when()
                 .delete("/delete")
                 .then()
-                .statusCode(200)  // Проверяем, что статус-код 200
-                .body("data", equalTo(requestBody))  // Проверяем, что тело ответа совпадает с отправленным телом
+                .statusCode(200) 
+                .body("data", equalTo(requestBody)) 
                 .extract()
                 .response();
 
-        // Выводим тело ответа для наглядности (опционально)
-        System.out.println("Response: " + response.asString());
+       System.out.println("Response: " + response.asString());
     }
 }
