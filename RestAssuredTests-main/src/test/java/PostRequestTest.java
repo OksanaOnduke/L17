@@ -9,18 +9,16 @@ public class PostRequestTest extends BaseTest {
     public void testPostRequest() {
         String requestBody = "This is expected to be sent back as part of response body.";
 
-        // Выполняем POST-запрос с телом
         Response response = given()
                 .body(requestBody)
                 .when()
                 .post("/post")
                 .then()
-                .statusCode(200)  // Проверяем, что статус-код 200
-                .body("data", equalTo(requestBody))  // Проверяем, что тело ответа совпадает с отправленным телом
+                .statusCode(200)  
+                .body("data", equalTo(requestBody)) 
                 .extract()
                 .response();
 
-        // Выводим тело ответа для наглядности (опционально)
         System.out.println("Response: " + response.asString());
     }
 }
