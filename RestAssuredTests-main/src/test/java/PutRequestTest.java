@@ -10,7 +10,6 @@ public class PutRequestTest extends BaseTest {
         String requestBody = "This is expected to be sent back as part of response body.";
         String cookieValue = "s%3A_tBOGZRPFc_NsDysJG6ETR_d3NpOWm66.XxONh3sSTPSaFEolygwfpRDUYivA7AhlRb7AVCDapj8";
 
-        // Выполняем PUT-запрос с заголовками и телом
         Response response = given()
                 .header("Content-Type", "text/plain")
                 .cookie("sails.sid", cookieValue)
@@ -18,12 +17,11 @@ public class PutRequestTest extends BaseTest {
                 .when()
                 .put("/put")
                 .then()
-                .statusCode(200)  // Проверяем, что статус-код 200
-                .body("data", equalTo(requestBody))  // Проверяем, что тело ответа совпадает с отправленным телом
+                .statusCode(200)  
+                .body("data", equalTo(requestBody)) 
                 .extract()
                 .response();
 
-        // Выводим тело ответа для наглядности (опционально)
         System.out.println("Response: " + response.asString());
     }
 }
